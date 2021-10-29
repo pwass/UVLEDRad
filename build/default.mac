@@ -1,0 +1,55 @@
+##############################################################################
+#                                                                            #
+# default.mac                                                                #
+# Initialisation macro for interactive mode.                                 #
+#                                                                            #
+###############################################################################
+
+# Run in interactive mode
+/control/verbose 2
+/run/verbose 1
+
+# Create a scene handler for Open GL Stored X
+/vis/open OGLSX 1000
+
+# Create empty scene and add geometry
+/vis/scene/create
+/vis/enable
+/vis/scene/add/volume
+/vis/sceneHandler/attach
+/vis/viewer/flush
+
+# Show particle tracks and hits
+/vis/scene/add/trajectories
+/vis/scene/add/hits
+/tracking/storeTrajectory 1
+
+# Nice viewing angle
+/vis/viewer/set/viewpointVector 2 1 1
+/vis/viewer/zoom 0.5 
+
+/vis/scene/endOfEventAction accumulate
+
+#-----------------------------------------------------------
+# Choose the radiative source.
+
+/gun/position 0.0 0.0 +16.0 mm
+
+# Co-60 (Cobalt)
+#/gun/particle ion
+#/gun/ion 27 60
+
+# Cs-137 (Caesium)
+/gun/particle ion
+/gun/ion 55 137
+
+# Sr-90 (Strontium)
+#/gun/particle ion
+#/gun/ion 38 90
+
+#------------------------------------------------------------
+
+#run/beamOn 1000
+
+
+
